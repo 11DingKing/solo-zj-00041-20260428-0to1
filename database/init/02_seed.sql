@@ -11,18 +11,18 @@ INSERT INTO categories (name, sort_order) VALUES
 -- 插入示例用户（密码使用 bcrypt 加密，密码均为：123456）
 -- 管理员
 INSERT INTO users (username, password, name, role) VALUES 
-('admin', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAzl9kWpaA53d.8jlg2zZ7wQzZ7u', '张管理员', 'admin');
+('admin', '$2b$10$gHMgMATUXBXg4enJ1cjUy./tn0tn5rbqg5tU8ozsRe3LXdilIOAqC', '张管理员', 'admin');
 
 -- 厨师
 INSERT INTO users (username, password, name, role) VALUES 
-('chef', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAzl9kWpaA53d.8jlg2zZ7wQzZ7u', '李大厨', 'chef'),
-('chef2', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAzl9kWpaA53d.8jlg2zZ7wQzZ7u', '王大厨', 'chef');
+('chef', '$2b$10$gHMgMATUXBXg4enJ1cjUy./tn0tn5rbqg5tU8ozsRe3LXdilIOAqC', '李大厨', 'chef'),
+('chef2', '$2b$10$gHMgMATUXBXg4enJ1cjUy./tn0tn5rbqg5tU8ozsRe3LXdilIOAqC', '王大厨', 'chef');
 
 -- 员工
 INSERT INTO users (username, password, name, role) VALUES 
-('employee1', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAzl9kWpaA53d.8jlg2zZ7wQzZ7u', '员工张三', 'employee'),
-('employee2', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAzl9kWpaA53d.8jlg2zZ7wQzZ7u', '员工李四', 'employee'),
-('employee3', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAzl9kWpaA53d.8jlg2zZ7wQzZ7u', '员工王五', 'employee');
+('employee1', '$2b$10$gHMgMATUXBXg4enJ1cjUy./tn0tn5rbqg5tU8ozsRe3LXdilIOAqC', '员工张三', 'employee'),
+('employee2', '$2b$10$gHMgMATUXBXg4enJ1cjUy./tn0tn5rbqg5tU8ozsRe3LXdilIOAqC', '员工李四', 'employee'),
+('employee3', '$2b$10$gHMgMATUXBXg4enJ1cjUy./tn0tn5rbqg5tU8ozsRe3LXdilIOAqC', '员工王五', 'employee');
 
 -- 插入员工过敏原示例
 INSERT INTO user_allergens (user_id, allergen) VALUES 

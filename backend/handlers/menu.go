@@ -11,7 +11,6 @@ import (
 	"canteen-system/models"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/redis/go-redis/v9"
 )
 
 func getMenuCacheKey(date, mealPeriod string) string {
