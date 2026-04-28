@@ -5,6 +5,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install --registry=https://registry.npmmirror.com
 
+ARG CACHEBUST=1
 COPY . .
 RUN npx vite build
 

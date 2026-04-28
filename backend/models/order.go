@@ -1,7 +1,9 @@
 package models
 
 import (
+	"database/sql/driver"
 	"encoding/json"
+	"errors"
 	"time"
 )
 
@@ -14,6 +16,42 @@ func (j JSONString) MarshalJSON() ([]byte, error) {
 func (j *JSONString) UnmarshalJSON(data []byte) error {
 	var s []string
 	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+	*j = s
+	return nil
+}
+
+func (j JSONString) Value() (driver.Value, error) {
+	if len(j) == 0 {
+		return "[]", nil
+	}
+	return json.Marshal(j)
+}
+
+func (j *JSONString) Scan(value interface{}) error {
+	if value == nil {
+		*j = JSONString{}
+		return nil
+	}
+
+	var bytes []byte
+	switch v := value.(type) {
+	case []byte:
+		bytes = v
+	case string:
+		bytes = []byte(v)
+	default:
+		return errors.New("failed to unmarshal JSONString value: incompatible type")
+	}
+
+	if len(bytes) == 0 || string(bytes) == "null" {
+		*j = JSONString{}
+		return nil
+	}
+
+	var s []string
+	if err := json.Unmarshal(bytes, &s); err != nil {
 		return err
 	}
 	*j = s
